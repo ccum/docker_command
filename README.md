@@ -87,6 +87,9 @@ docker system prune -a
 ```
 Variables $DOCKER_HOST, es para coneectarnos a otros host donde tengamos un demonio docker instalador
 Configuración cluster
+
 ![config](https://image.prntscr.com/image/sQNAL2F1SYKjg704xhOziw.png)
+
 ejecución y listado re deamon remote
+
 ![config](https://image.prntscr.com/image/ZnMxI8eIRK6V66b124eDgQ.png)
