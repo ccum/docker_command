@@ -66,5 +66,5 @@ docker cp <CONTAINER ID>:/.fichero
 Ejecutar un comando dentro del contenedor
 ```
 docker exec <CONTAINER ID> <COMANDO>
-docker exec <CONTAINER ID> ls :white_check_mark:
-```
+docker exec <CONTAINER ID> ls 
+```:white_check_mark:
