@@ -20,10 +20,51 @@ Correr una imagen
 ```
 docker run -d -p 80:80 nginx
 ```
-Listar contenerdores que se tiene en el host
+Listar contenedores ejecutandose
 ```
 docker ps
 ```
-Obtener mas insformacion de un contenedor
-```docker inspect <CONTAINER ID>
+Obtener mas información de un contenedor
+```
+docker inspect <CONTAINER ID>
+```
+```
+docker inspect -f '{{.Name}}' <CONTAINER ID>
+```
+Stop container
+```
+docker stop <CONTAINER ID>
+```
+Listar container parados y ejecutandose
+```
+docker ps -a
+```
+Listar solo ID
+```
+docker ps -q
+```
+Arrancar container
+```
+docker start <CONTAINER ID>
+```
+Parar todos los contenedores
+```
+docker stop `docker ps -q`
+```
+Borrar contenedores 
+```
+docker rm <CONTAINER ID>
+```
+Borrar contenedores ejecutandose
+```
+docker rm -f <CONTAINER ID>
+```
+Copiar ficheros dentro del contenedor y fuera de contedor
+```
+docker cp <CONTAINER ID>:/.fichero
+```
+Ejecutar un comando dentro del contenedor
+```
+docker exec <CONTAINER ID> <COMANDO>
+docker exec <CONTAINER ID> ls [](#Dreamhack-tm)
 ```
