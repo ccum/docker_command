@@ -1,6 +1,8 @@
 Comandos Docker
 ==============
 
+Básicos
+-------------
 ```
 docker info
 ```
