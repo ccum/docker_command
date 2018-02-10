@@ -19,6 +19,7 @@ docker container run --help
 Correr una imagen
 ```
 docker run -d -p 80:80 nginx
+docker run -d mysql
 ```
 Listar contenedores ejecutandose
 ```
@@ -66,6 +67,26 @@ docker cp <CONTAINER ID>:/.fichero
 Ejecutar un comando dentro del contenedor
 ```
 docker exec <CONTAINER ID> <COMANDO>
-docker exec <CONTAINER ID> ls 
+docker exec <CONTAINER ID> ls
+docker exec <CONTAINER ID> sh
 ```
 :white_check_mark:
+
+Log del contenedor
+
+```
+docker logs <CONTAINER ID>
+```
+Listar CPU,memoria,etc
+```
+docker stat <CONTAINER ID>
+```
+Borrar la basura de docker (imagenes sin usar, volunenes, redes)
+```
+docker system prune -a
+```
+Variables $DOCKER_HOST, es para coneectarnos a otros host donde tengamos un demonio docker instalador
+Configuración cluster
+![config](https://image.prntscr.com/image/sQNAL2F1SYKjg704xhOziw.png)
+ejecución y listado re deamon remote
+![config](https://image.prntscr.com/image/ZnMxI8eIRK6V66b124eDgQ.png)
