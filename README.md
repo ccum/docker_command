@@ -67,4 +67,5 @@ Ejecutar un comando dentro del contenedor
 ```
 docker exec <CONTAINER ID> <COMANDO>
 docker exec <CONTAINER ID> ls 
-```:white_check_mark:
+```
+:white_check_mark:
