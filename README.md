@@ -1,4 +1,4 @@
-Comandos Docker
+Comandos de gestión de contenedores
 ==============
 
 Básicos
@@ -85,7 +85,7 @@ Borrar la basura de docker (imagenes sin usar, volunenes, redes)
 ```
 docker system prune -a
 ```
-Variables $DOCKER_HOST, es para coneectarnos a otros host donde tengamos un demonio docker instalador
+Variables $DOCKER_HOST, es para coneectarnos a otros host donde tengamos un demonio docker instalado
 Configuración cluster
 
 ![config](https://image.prntscr.com/image/sQNAL2F1SYKjg704xhOziw.png)
@@ -93,3 +93,6 @@ Configuración cluster
 ejecución y listado re deamon remote
 
 ![config](https://image.prntscr.com/image/ZnMxI8eIRK6V66b124eDgQ.png)
+
+Docker y microservicios
+![config](https://image.prntscr.com/image/NFGbjRnxS0ejJyeN356KFw.png)
