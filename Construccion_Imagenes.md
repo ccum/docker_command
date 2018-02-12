@@ -37,7 +37,7 @@ docker build -t prueba .
 ![config](https://image.prntscr.com/image/4_ajbm6zTMaqyjdK5taakw.png)
 
 Push to Docker HUB
-------------
+-------------------
 
 1. Hacemos el build en mi con mi perfil (cecum)
 ```
@@ -49,3 +49,34 @@ docker build -t cecum/prueba .
 ```
 docker push cecum/prueba
 ``` 
+Login on Dockerhub
+-------------------
+
+```
+docker login
+```
+
+Docker pull
+-----------
+
+```
+docker pull
+```
+
+listar Imagenes Locales
+-----------
+
+```
+docker images ls
+```
+
+Inspect de Imagenes Locales
+-----------
+```
+docker inspect <ID_IMAGEN>
+```
+
+Borrado de Imagenes Locales
+-----------
+````
+docker image rm <IMAGE ID>
