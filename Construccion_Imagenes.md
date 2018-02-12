@@ -78,8 +78,9 @@ docker inspect <ID_IMAGEN>
 
 Borrado de Imagenes Locales
 -----------
-````
+```
 docker image rm <IMAGE ID>
+```
 
 Buenas prácticas
 ----------------
