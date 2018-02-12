@@ -30,7 +30,22 @@ CMD ["app.py"]
 
 Docker Build
 ------------
-
+```
 docker build -t prueba .
+```
 
 ![config](https://image.prntscr.com/image/4_ajbm6zTMaqyjdK5taakw.png)
+
+Push to Docker HUB
+------------
+
+1. Hacemos el build en mi con mi perfil (cecum)
+```
+docker build -t cecum/prueba .
+```
+
+2. Hacemos push de la imagen generada
+
+```
+docker push cecum/prueba
+``` 
