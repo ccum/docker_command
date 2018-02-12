@@ -108,3 +108,13 @@ RUN apt-get update && apt-get install -y \
     mercurial \ 
     apt-get clean
 ```
+5. Optimiza el uso de la cache .
+>Optimiza el uso de la cache añadiendo al principio de tu Dockerfile las instrucciones que menos cambian (como la instalación de librerías), y dejando para el final las que más cambian (como el copiado del código fuente). 
+
+6. Parametriza tus Dockerfiles usando argumentos
+7. Utiliza multi-stage builds
+
+Desarrollo con Contenedores
+===========================
+
+Docker Compose y docker-compose.yml
