@@ -27,3 +27,10 @@ CMD ["app.py"]
 7. EXPOSE puerto : para definir puertos donde el contenedor acepta conexiones.
 8. VOLUME path : para definir volúmenes en el contenedor.
 9. COPY origen destino : para copiar ficheros dentro de la imagen. También se usa para multi-stage builds.
+
+Docker Build
+------------
+
+docker build -t prueba .
+
+![config](https://image.prntscr.com/image/4_ajbm6zTMaqyjdK5taakw.png)
