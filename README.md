@@ -18,6 +18,7 @@ docker container run --help
 
 Correr una imagen
 ```
+docker run -d <IMAGEN ID>
 docker run -d -p 80:80 nginx
 docker run -d mysql
 ```

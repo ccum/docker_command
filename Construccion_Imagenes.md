@@ -80,3 +80,30 @@ Borrado de Imagenes Locales
 -----------
 ````
 docker image rm <IMAGE ID>
+
+Buenas prácticas
+----------------
+
+1. Usa .dockerignore
+2. Reduce el tamaño de tus imágenes al mínimo
+3. Ejecuta sólo un proceso por contenedor
+4. Minimiza el número de capas de tu imagen
+
+```
+RUN apt-get update
+RUN apt-get install -y bzr
+RUN apt-get install -y cvs
+RUN apt-get install -y git
+RUN apt-get install -y mercurial
+```
+
+Por
+
+```
+RUN apt-get update && apt-get install -y \
+    bzr \ 
+    cvs \ 
+    git \ 
+    mercurial \ 
+    apt-get clean
+```
