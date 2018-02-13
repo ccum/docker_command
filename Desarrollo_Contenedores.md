@@ -72,3 +72,25 @@ command: para redefinir el comando que ejecuta el container en lugar del comando
 environment: para definir variables de entorno en el contenedor. Se pueden pasar haciendo referencia a un fichero usando la propiedad env_file. Si la variable no tiene un valor dado, su valor se cogerá del entorno de shell que ejecuta el docker-compose up, lo que puede ser útil para pasar claves, por ejemplo.
 depends_on: para definir relaciones entre contenedores.
 ports: para mapear los puertos donde el contenedor acepta conexiones.
+
+
+Volúmenes
+---------
+
+````
+version: '3.4'
+services:
+    mysql:
+        image: mysql
+        volumes:
+            - data:/var/lib/mysql
+            - logs:/var/log/mysql
+            - /etc:/etc
+    analyzer:
+        image: log-analyzer
+        volumes:
+        - logs:/var/log:ro
+volumes:
+    data:
+    logs:
+````
