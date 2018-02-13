@@ -41,7 +41,14 @@ docker-compose up -d
 
 Comandos comunes de compose I
 -----------------------------
-
+´´´
+docker-compose up
+docker-compose pull
+docker-compose build
+docker-compose push
+docker-compose run
+docker-compose rm
+´´´
 Destacar los siguientes puntos sobre docker-compose:
 docker-compose up -d levanta la aplicación en modo demonio, docker-compose up la levanta en primer plano, mostrando los logs de los distintos contenedores. La ejecución sucesiva del comando docker-compose up -d sólo recrea los contenedores que hayan cambiado su imagen o su definición. docker-compose up -d no hace el build cada vez que es invocado de las imágenes locales. Si deseas actualizar tu aplicación en base a los últimos cambios de tu código, tendrás que ejecutar docker-compose up --build -d. Un truco para mejorar este proceso es montar tu código como un volumen en el fichero docker-compose.yml, de tal manera que tu container siempre ve los últimos cambios en tu código fuente. Si quieres levantar solo uno o varios de los servicios en un compose, puedes añadir su nombre, por ejemplo docker-compose up -d redis.
 
