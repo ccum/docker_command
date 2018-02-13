@@ -112,9 +112,26 @@ RUN apt-get update && apt-get install -y \
 >Optimiza el uso de la cache añadiendo al principio de tu Dockerfile las instrucciones que menos cambian (como la instalación de librerías), y dejando para el final las que más cambian (como el copiado del código fuente). 
 
 6. Parametriza tus Dockerfiles usando argumentos
+```
+FROM ubuntu
+ARG user=root
+ARG password
+RUN echo $user $password
+
+```
+puede ser parametrizado de la siguiente manera:
+
+```
+docker build -t imagen --build-arg password=secret .
+```
+
 7. Utiliza multi-stage builds
 
-Desarrollo con Contenedores
-===========================
+Los multi-stage es una funcionalidad introducida recientemente y que ayuda a crear imágenes muy pequeñas. Permiten resetear el sistema de ficheros de la imagen que se está construyendo, cambiar a otro sistema de fichero, pero importar ficheros de la imagen anterior.
 
-Docker Compose y docker-compose.yml
+Tenemos un ejemplo en [Idocker-for-dev/go-multi-stage](https://github.com/ccum/docker-for-devs/blob/master/go-multi-stage/Dockerfile)
+El primer FROM línea inicializa el sistema de ficheros con una imagen que lleva Go instalado. En esa imagen añadimos el directorio actual con todo su contexto y hacer el build de nuestro programa Go. Luego viene una nueva instrucción FROM que inicializa el sistema de ficheros con una imagen alpine sin nada instalado. La instrucción COPY copia el binario generado en el stage anterior y lo copia en la imagen actual. El resultado es una imagen muy pequeña, ya que no lleva el compilador de Go incluido, solo lleva el binario que necesitamos.
+
+
+
+
