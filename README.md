@@ -74,6 +74,7 @@ Ejecutar un comando dentro del contenedor
 docker exec <CONTAINER ID> <COMANDO>
 docker exec <CONTAINER ID> ls
 docker exec <CONTAINER ID> sh
+docker exec -it <CONTAINER ID> sh bash
 ```
 :white_check_mark:
 

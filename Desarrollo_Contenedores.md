@@ -94,3 +94,147 @@ volumes:
     data:
     logs:
 ````
+
+Redes
+
+Las redes tienen su propia interfaz con la línea de comandos de docker :
+
+docker network create : crea una nueva red.
+docker network ls : muestra las redes de nuestra máquina.
+docker inspect : devuelve información relativa a una red.
+docker network rm : elimina una red.
+
+```
+version: '3.4'
+
+services:
+  proxy:
+    image: busybox
+    networks:
+      - outside
+  app:
+    image: busybox
+    networks:
+      - default
+      - inside
+
+networks:
+  outside:
+    external: true
+  default:
+  inside:
+     driver: bridge
+    enable_ipv6: true
+```
+
+Variables de Entorno.
+
+En los valores de todos y cada uno de los campos del fichero docker-compose.yml podemos hacer uso de la notación ${VERSION:-value} , para tomar el valor de la variable $VERSION , o el valor value si la variable $VERSION no está definida. Por ejemplo, podríamos usarlo para parametrizar la versión de go que queremos usar:
+
+```
+example:
+    image: golang:${GO_VERSION:-1.9}
+    command: go test ./...
+```
+```
+GO_VERSION=-1.9 docker-compose pull
+```
+
+Montar Directorio de Trabajo.
+Aunque el proceso de hacer build de una imagen está muy optimizado gracias al uso de la caché de Docker, aunque solo sea para mandar el contexto a la api de Docker, suele tardar algunos segundos como poco. Por tanto, construir una imagen de Docker para cambio de código que hagamos puede resultar ineficiente.
+
+La solución es es montar el directorio de trabajo actual el contenedor que estemos ejecutando. Por ejemplo, el siguiente servicio corre los tests de una aplicación Go sin necesidad de construirlo en cada ejecución:
+
+```
+  test:
+    image: golang:1.9
+    working_dir: /go/src/app
+    volumes:
+      - ${PWD}:/go/src/app
+    command: go test ./...
+```
+
+Montar Docker Socket
+
+Otro caso muy común es cuando necesitamos que un contenedor acceda a la API de Docker. Una solución que nosotros no recomendamos es el uso de Docker in Docker ( DinD ), un contenedor que necesita correr en modo privilegiado y que puede crear contenedores dentro del. DinD no es del todo estable, nosotros recomendamos usar el mismo docker que está corriendo en el host. Para ello, nuestro contenedor solo necesitará tener la línea de comandos de Docker instalada, y montar el socket donde Docker publica su api, /var/run/docker.sock . Como ejemplo, el siguiente servicio lista los contenedores del host:
+
+```
+docker:
+    image: docker:17.10
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: docker
+    command: ps
+```
+[Ejemplo](https://github.com/ccum/docker-for-devs/blob/master/docker/docker-compose.yml)
+
+Aplicación Django, con celery y beat
+
+El siguiente ejemplo muestra el docker-compose.yml de una aplicación Django, integrada con celery y con un beat para ejecutar tareas periódicas:
+
+´´´
+version: '3.4'
+
+services:
+  api:
+    image: app
+    build: .
+    command: gunicorn -b 0.0.0.0:80 -w 8 app.wsgi
+
+  worker:
+    image: app
+    entrypoint: celery -A app 
+    command: worker -c 8 -P prefork -O fair
+
+  beat:
+    image: app
+    entrypoint: celery -A app 
+    command: beat
+´´´
+
+Importar compose file
+---------------------
+
+Como ejemplo tenemos el siguiente docker-compose.yml :
+
+```
+web:
+  image: app
+  depends_on:
+    - db
+db:
+  image: postgres:latest
+```
+
+y definir un docker-compose.override.yml para desarrollo:
+
+```
+web:
+  build: .
+  volumes:
+    - '.:/code'
+  ports:
+    - 8883:80
+  environment:
+    DEBUG: 'true'
+
+db:
+  command: '-d'
+  ports:
+    - 5432:5432
+```
+
+y un docker-compose.prod.yml para producción:
+
+```
+web:
+  ports:
+    - 80:80
+  environment:
+    PRODUCTION: 'true'
+```
+
+Finalmente: 
+```
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml run
+```
