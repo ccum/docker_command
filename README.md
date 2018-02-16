@@ -21,6 +21,7 @@ Correr una imagen
 docker run -d <IMAGEN ID>
 docker run -d -p 80:80 nginx
 docker run -d mysql
+docker run --name myAlpineContainer -it <IMAGEN ID>
 ```
 Listar contenedores ejecutandose
 ```
@@ -48,6 +49,9 @@ docker ps -q
 Arrancar container
 ```
 docker start <CONTAINER ID>
+```
+```
+docker start -ai <CONTAINER ID>
 ```
 Parar todos los contenedores
 ```
