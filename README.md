@@ -93,6 +93,11 @@ docker system prune -a
 ```
 Variables $DOCKER_HOST, es para coneectarnos a otros host donde tengamos un demonio docker instalado
 Configuración cluster
+```
+export DOCKER_HOST="tcp://ucp.dckr.io:443"
+export DOCKER_TLS_VERIFY=1
+export DOCKER_CERT_PATH="~/ucp/stage"
+```
 
 ![config](https://image.prntscr.com/image/sQNAL2F1SYKjg704xhOziw.png)
 
