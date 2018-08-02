@@ -22,7 +22,11 @@ docker run -d <IMAGEN ID>
 docker run -d -p 80:80 nginx
 docker run -d mysql
 docker run --name myAlpineContainer -it <IMAGEN ID>
+docker run --rm --name myAlpineContainer -it <IMAGEN ID>
 ```
+agregamos ´´´--rm´´´ para cuando el contenedor se pare se elimine automaticamente
+
+
 Listar contenedores ejecutandose
 ```
 docker ps
