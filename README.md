@@ -25,11 +25,12 @@ docker run -d mysql
 docker run --name myAlpineContainer -it <IMAGEN ID> bash
 docker run --rm --name myAlpineContainer -it <IMAGEN ID> bash
 ```
-agregamos ´´´--rm´´´ para cuando el contenedor se pare se elimine automaticamente
+agregamos ```--rm``` para cuando el contenedor se pare se elimine automaticamente
 
 **Imagen con volumen y puerto**
-
+```
 sudo docker run -d -u root -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var -ti  <IMAGEN ID> bash 
+```
 
 Listar contenedores ejecutandose
 ```
