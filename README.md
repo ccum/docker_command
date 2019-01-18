@@ -99,7 +99,15 @@ docker stat <CONTAINER ID>
 Borrar la basura de docker (imagenes sin usar, volunenes, redes)
 ```
 docker system prune -a
+
 ```
+
+One liner to stop / remove all of Docker containers:
+```
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
+
 Variables $DOCKER_HOST, es para coneectarnos a otros host donde tengamos un demonio docker instalado
 Configuración cluster
 ```
