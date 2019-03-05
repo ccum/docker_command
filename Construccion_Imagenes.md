@@ -42,6 +42,8 @@ Push to Docker HUB
 1. Hacemos el build en mi con mi perfil (cecum)
 ```
 docker build -t cecum/prueba .
+
+docker build -f Dockerfile.debug .
 ```
 
 2. Hacemos push de la imagen generada
