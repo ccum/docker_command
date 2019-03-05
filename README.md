@@ -84,6 +84,12 @@ docker exec <CONTAINER ID> <COMANDO>
 docker exec <CONTAINER ID> ls
 docker exec <CONTAINER ID> sh
 docker exec -it <CONTAINER ID> sh bash
+
+```
+ejecutar contenedor como root
+```
+docker exec -u root -ti <CONTAINER ID> bash
+docker exec -u 0 -ti <CONTAINER ID> bash
 ```
 :white_check_mark:
 
