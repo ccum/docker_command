@@ -97,6 +97,7 @@ Log del contenedor
 
 ```
 docker logs <CONTAINER ID>
+docker logs -f <CONTAINER ID> #para ver logs en real time
 ```
 Listar CPU,memoria,etc
 ```
