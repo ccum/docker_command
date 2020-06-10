@@ -52,7 +52,9 @@ docker-compose rm
 ```
 
 Destacar los siguientes puntos sobre docker-compose:
+
 docker-compose up -d levanta la aplicación en modo demonio, docker-compose up la levanta en primer plano, mostrando los logs de los distintos contenedores. La ejecución sucesiva del comando docker-compose up -d sólo recrea los contenedores que hayan cambiado su imagen o su definición. docker-compose up -d no hace el build cada vez que es invocado de las imágenes locales. Si deseas actualizar tu aplicación en base a los últimos cambios de tu código, tendrás que ejecutar docker-compose up --build -d. Un truco para mejorar este proceso es montar tu código como un volumen en el fichero docker-compose.yml, de tal manera que tu container siempre ve los últimos cambios en tu código fuente. Si quieres levantar solo uno o varios de los servicios en un compose, puedes añadir su nombre, por ejemplo docker-compose up -d redis.
+
 
 docker-compose pull actualiza las imágenes definidas en el compose con la versión actual que haya en el registro. En otras palabras, si alquien hace un push al registro, actualiza la versión de estas imágenes en nuestra máquina. Con la opción --parallel hace el pull en paralelo. Como todo comando de docker-compose se puede hacer pull de un subconjunto de servicios: docker-compose pull servicioA ServicioB.
 
